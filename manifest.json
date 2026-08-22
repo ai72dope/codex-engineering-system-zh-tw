@@ -1,0 +1,10 @@
+{
+  "product": "Codex Engineering System",
+  "version": "1.2.0",
+  "language": "en",
+  "edition": "Full English",
+  "install_items": [
+    "AGENTS.md",
+    "codex-system/"
+  ]
+}
