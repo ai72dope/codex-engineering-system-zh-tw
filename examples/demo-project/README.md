@@ -1,27 +1,21 @@
-# Demo Project — Installed Example
+# Demo Project — v1.3.2
 
-This folder shows the system already installed:
+這個小型專案用來示範 Codex Engineering System 的安裝方式與 Adaptive Routing 行為。
 
-```text
-demo-project/
-├── AGENTS.md
-├── codex-system/
-├── src/
-└── tests/
-```
+Repository 內包含：
 
-Try asking Codex:
+- `AGENTS.md`
+- `codex-system/`
+- 範例 Source Code 與 Tests
 
-> `calculate_order_total should reject a negative quantity. Please fix it.`
+你可以嘗試不同深度的需求：
 
-Codex can route the request through the Bug Fix Workflow.
+- Simple：`Rename a local variable for clarity without changing behavior.`
+- Bug：`Find and fix the order total bug and add a regression test.`
+- Complex Feature：`Add discount rules with explicit acceptance criteria and tests.`
 
-Run tests with:
-```bash
-python -m unittest discover -s tests -v
-```
+觀察重點是：小任務保持輕量；模糊、複雜或高風險工作則增加 Specification、Testing 與 Verification 深度。
 
-Then try:
-1. **Bug Fix:** reject negative quantity.
-2. **New Feature:** add a configurable discount rule for totals of 500 or more.
-3. **Review:** review the resulting diff.
+若要測 TDD，請確認最後回覆包含真實 `TDD Trace`，而不只是說「using TDD」。
+
+若要測 Routing Visibility，每個 Case 請使用乾淨的 Demo 副本，避免前一題修改造成 Test Environment Contamination。

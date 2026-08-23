@@ -1,6 +1,19 @@
 # Refactor Workflow
-1. **Baseline**：確認目前行為與既有測試；重要行為缺乏測試時，先考慮 Characterization Test。
-2. **Plan**：明確定義重構目的，例如可讀性、責任邊界、重複、耦合或可測試性。
-3. **Refactor**：小步驟、保持行為不變；避免無關依賴升級或業務規則修改。
-4. **Validate**：執行相關測試與適用的 Lint／Type Check／Build。
-5. **Review**：檢查過度抽象、碎片化、新耦合、效能 Regression 與脆弱測試。
+## 1. Baseline
+Confirm current behavior and existing tests. If important behavior is untested, consider a characterization test first.
+
+## 2. Plan
+State the concrete goal: readability, responsibility boundaries, duplication, coupling, or testability.
+
+## 3. Refactor
+Make small behavior-preserving changes. Avoid unrelated dependency upgrades or business-rule changes.
+
+## 4. Validate
+Run the relevant baseline tests and applicable lint/type/build checks.
+
+## 5. Review
+Check for over-abstraction, excessive fragmentation, new coupling, performance regressions, or tests tied too tightly to implementation details.
+
+
+## v1.3.2 observability rule
+For non-Simple work, emit the Route block immediately after classification and before clarification, planning, blocker messages, or implementation. If TDD is used, include the required TDD Trace with actual execution evidence.

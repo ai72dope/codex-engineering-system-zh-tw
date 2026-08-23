@@ -1,13 +1,58 @@
-# Workflow Guide
-The system uses:
-`Understand → Plan → Implement → Test → Review → Verify`
+# Workflow Guide — v1.3 Adaptive Routing
 
-**Understand:** read relevant code, dependencies, tests, and rules.
-**Plan:** define scope, design, risks, and validation.
-**Implement:** make the minimum necessary change.
-**Test:** run relevant tests and add regression coverage.
-**Review:** inspect correctness, security, maintainability, performance, and test sufficiency.
-**Verify:** distinguish plausible correctness from actual executed validation.
-**Improve:** handle only improvements with clear relevance; list unrelated ideas separately.
+Codex Engineering System v1.3 does not use the same process for every task.
 
-Use `bug_fix.md` for normal defects, `debugging.md` first when the cause is unclear, `new_feature.md` for features, `refactor.md` for behavior-preserving structural work, and `project_setup.md` for new repositories/modules.
+## 1. Classify
+Determine:
+- task type;
+- complexity: Simple / Standard / Complex;
+- risk: Normal / High Risk.
+
+## 2. Choose workflow depth
+
+### Simple
+`Understand → Change → Targeted Verify`
+
+### Standard
+`Understand → Plan → Implement → Test → Verify`
+
+### Complex
+`Understand → Spec → Plan → TDD when appropriate → Implement → Test → Review → Verify`
+
+### High Risk
+Keep the appropriate complexity path, but strengthen acceptance criteria, testing, security review, and reporting.
+
+## 3. Add specialist guidance only when needed
+Debugging, testing, code review, security, architecture, and refactoring documents are optional layers. Avoid loading everything by default.
+
+## 4. Specs
+Specs are for consequential ambiguity, not ceremony. A useful spec defines requirements, acceptance criteria, edge cases, out-of-scope work, and unresolved questions.
+
+## 5. TDD
+TDD is selected when a stable automated test can express the behavior and test-first feedback is valuable. It is especially useful for regressions and business rules.
+
+## 6. Verification
+The system distinguishes actual execution from reasoning:
+- Passed
+- Failed
+- Not run
+- Manual/Static check
+
+This prevents “looks correct” from being reported as “tests passed”.
+
+
+## 7. Observability
+
+v1.3.1 exposes the chosen route so users can see the system working.
+
+For non-trivial tasks, report:
+- task type;
+- complexity;
+- risk;
+- whether Spec is active;
+- whether TDD is active;
+- any specialist guidance loaded.
+
+When TDD is active, preserve RED/GREEN/REFACTOR execution evidence.
+
+See `OBSERVABILITY.md`.

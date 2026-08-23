@@ -1,11 +1,33 @@
 # Bug Fix Workflow
-## 1. 重現
-使用錯誤訊息、Log、失敗測試或重現步驟定位問題；無法重現時說明原因。
-## 2. Root Cause
-區分症狀與根本原因，以程式路徑、測試、Log 或 Repo 證據支持結論；不確定的部分標示為假設。
-## 3. 修復
-以最小必要修改處理已確認根因，不以吞錯或 Hard-code 掩蓋症狀。
-## 4. Regression Test
-可行時加入修復前會失敗、修復後會通過的測試，並涵蓋重要邊界案例。
-## 5. 驗證
-執行相關測試與檢查，回報實際結果與剩餘風險。
+
+## Phase 0 — Route
+Classify complexity and risk. Load debugging/testing/security guidance only when relevant.
+
+## Phase 1 — Reproduce
+Use a failing test, error, log, or reliable reproduction path. If reproduction is not possible, say so and identify what evidence is available.
+
+## Phase 2 — Root Cause
+Trace from symptom to cause. Distinguish repository evidence from hypotheses. Do not patch the first suspicious line without explaining why it causes the observed behavior.
+
+## Phase 3 — Regression Test
+When practical, create a test that demonstrates the bug before the fix and protects against recurrence.
+
+For suitable bugs, use the TDD loop:
+`Red → Minimal Fix → Green → Refactor`
+
+## Phase 4 — Minimal Fix
+Fix the confirmed root cause with the smallest appropriate change. Do not swallow errors, disable safeguards, or hard-code around the symptom.
+
+## Phase 5 — Verify
+Run the focused regression test and relevant broader checks. For high-risk fixes, test important failure/boundary paths.
+
+## Phase 6 — Report
+Report root cause, changed behavior, exact validation status, and any remaining uncertainty.
+
+
+## Observability
+For Standard, Complex, or High-Risk work, emit the compact Routing Trace defined in `AGENTS.md`. If TDD is selected, include the TDD Trace with actual execution evidence.
+
+
+## v1.3.2 observability rule
+For non-Simple work, emit the Route block immediately after classification and before clarification, planning, blocker messages, or implementation. If TDD is used, include the required TDD Trace with actual execution evidence.

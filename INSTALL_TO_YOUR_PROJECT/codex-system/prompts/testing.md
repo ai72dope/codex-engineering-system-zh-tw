@@ -1,2 +1,16 @@
-# Testing 規範
-以可觀察行為設計測試。視情況涵蓋 Happy Path、邊界值、空值、非法輸入、錯誤路徑、Regression 與外部依賴失敗。沿用專案既有測試框架與慣例。產生或修改測試後必須實際執行；沒有執行成功，不得聲稱測試通過。
+# Testing Guidance
+
+Design tests around observable behavior.
+
+Consider as applicable:
+- Happy path
+- Boundary values
+- Empty / null
+- Invalid input
+- Error paths
+- Regression
+- External dependency failures
+
+Use the repository's existing test framework and conventions.
+
+After creating or updating tests, actually run the relevant test set. If applicable, run lint/type checks. Never describe generated tests as passing unless they executed successfully.

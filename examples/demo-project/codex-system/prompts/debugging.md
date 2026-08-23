@@ -1,2 +1,16 @@
-# 深度 Debugging
-當根因不明時，檢查錯誤、相關程式碼、預期／實際行為與重現路徑。最多列出三個可能根因並依證據排序，區分事實與假設。先找出能驗證主要假設的最小下一步，再修改程式。確認根因後採最小修復，適用時加入 Regression Test 並執行驗證。
+# Deep Debugging
+
+## Root-cause analysis
+Inspect the error, relevant code/files, expected behavior, actual behavior, and reproduction path.
+
+1. Attempt to reproduce or localize the issue using repository evidence.
+2. List up to three plausible root causes, ranked by evidence.
+3. Separate confirmed facts from hypotheses.
+4. Identify the smallest next action that can confirm or reject the leading hypothesis.
+5. Do not patch symptoms before understanding a non-trivial root cause.
+
+## Fix
+Once the cause is confirmed, make the minimum necessary fix, preserve unrelated behavior, add a regression test where practical, and run relevant validation.
+
+## Regression check
+Inspect adjacent paths, relevant boundaries, error paths, concurrency/retry behavior when applicable, and public API/data-format compatibility. Report only risks with a plausible mechanism.

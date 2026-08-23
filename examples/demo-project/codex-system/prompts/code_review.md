@@ -1,2 +1,21 @@
-# Code Review 規範
-檢查目前修改的正確性、安全性、錯誤處理、可維護性、具體效能風險、測試與 Scope Creep。每個有意義的 Finding 應包含位置、問題、影響、證據／觸發條件與建議。不要為了填滿分類而虛構問題。
+# Code Review
+
+Review the current change without immediately modifying it.
+
+Check:
+1. Correctness
+2. Security
+3. Error handling
+4. Maintainability
+5. Performance only where a concrete mechanism exists
+6. Tests
+7. Scope creep
+
+For meaningful findings include:
+- Location
+- Problem
+- Why it matters
+- Evidence / trigger
+- Recommendation
+
+Use Critical / High / Medium / Low when useful. Do not invent findings to fill categories.

@@ -1,13 +1,42 @@
-# 新功能 Workflow
-## 1. 理解
-閱讀相關程式碼、測試、AGENTS.md 與依賴，確認目前行為、影響模組與未知資訊。
-## 2. 規劃
-定義最小實作方案：修改檔案、API／資料影響、邊界案例、風險與驗證方式。
-## 3. 實作
-依確認方案實作，遵守 AGENTS.md，不修改無關行為、不隨意增加依賴。
-## 4. 測試
-新增或更新相關測試，實際執行適用的測試、Lint、Type Check、Build。
-## 5. Review
-檢查正確性、安全性、錯誤處理、可維護性、範圍與測試覆蓋。
-## 6. 驗證
-回報 Changed / Why / Validation / Remaining，清楚區分已執行與未執行的驗證。
+# New Feature Workflow
+
+## Phase 0 — Route
+Classify complexity and risk using `routing/complexity.md` and `routing/risk.md`.
+
+- Simple feature change: use the lightweight path.
+- Standard feature: use the normal workflow below.
+- Complex or materially ambiguous feature: load `spec_driven.md`.
+- Use `tdd.md` when behavior is testable and test-first work adds value.
+- High-risk feature: increase review and validation depth.
+
+## Phase 1 — Understand
+Read relevant code, tests, `AGENTS.md`, dependencies, and existing patterns. Identify affected behavior and important unknowns.
+
+## Phase 2 — Define
+For Standard work, state the intended behavior and key edge cases in the plan.
+For Complex/ambiguous work, create a proportional spec with acceptance criteria and out-of-scope boundaries.
+
+## Phase 3 — Plan
+Create the minimum implementation plan: files/components to change, API/data impact, compatibility concerns, risks, and validation strategy.
+
+## Phase 4 — Implement
+Implement the confirmed approach. Preserve unrelated behavior and avoid unnecessary dependencies or scope expansion.
+
+If TDD is selected, follow Red → Green → Refactor rather than implementing first.
+
+## Phase 5 — Test
+Add or update tests for the required behavior. Actually run relevant tests plus applicable lint, type-check, and build checks.
+
+## Phase 6 — Review
+Review the diff for correctness, security, error handling, maintainability, performance where relevant, scope creep, compatibility, and test coverage.
+
+## Phase 7 — Verify
+Check implementation against the requirements/acceptance criteria. Report Changed / Why / Validation / Remaining using the verification contract.
+
+
+## Observability
+For Standard, Complex, or High-Risk work, emit the compact Routing Trace defined in `AGENTS.md`. If TDD is selected, include the TDD Trace with actual execution evidence.
+
+
+## v1.3.2 observability rule
+For non-Simple work, emit the Route block immediately after classification and before clarification, planning, blocker messages, or implementation. If TDD is used, include the required TDD Trace with actual execution evidence.
