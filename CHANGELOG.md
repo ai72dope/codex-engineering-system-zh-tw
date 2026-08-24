@@ -1,60 +1,53 @@
-# Changelog
+# 更新紀錄
 
-## v1.3.3 — Decision Boundary Hardening
+## v1.3.3 — 決策邊界補強
 
-- Added an explicit business-rule boundary: Codex must not invent consequential product policy such as loyalty tiers, percentages, eligibility, or stacking rules.
-- Added a high-risk context gate for authentication, authorization, destructive operations, and security-boundary work.
-- Missing actor identity, auth context, roles/permissions, protected API, or denial semantics now require clarification instead of implicit architecture invention.
-- Clarified that plausible defaults are still invented requirements.
-- Preserved existing adaptive routing, TDD, verification, and Simple-task behavior.
+- 新增 Business Rule Boundary：不得自行發明會員等級、折扣比例、資格條件、優惠疊加等產品規則。
+- 新增 High-Risk Context Gate：Auth、Authorization、刪除等高風險任務，缺少身份、角色、權限或 API 契約時必須先詢問。
+- 明確禁止為了完成任務而自行新增 `acting_user_id`、角色模型或 Authentication Flow。
+- 保留既有 Adaptive Routing、TDD、Verification 與 Simple Task 行為。
+
+# 更新紀錄（Changelog）
 
 ## [1.3.2] - 2026-08-23
-### Fixed
-- Routing Trace is mandatory immediately after classifying any non-Simple task.
-- Clarification-only responses must show the Route block first.
-- Missing-context and “already fixed” responses must show the Route block first.
-- Spec/TDD routing fields may use `Pending` when not yet decided.
-- TDD Trace requirements now explicitly require real execution evidence.
+### 修正
+- 非 Simple 任務完成分類後，Routing Trace 應立即顯示。
+- 只有 clarification 的回覆也應先顯示 Route block。
+- Missing-context 與「already fixed」回覆也應先顯示 Route block。
+- Spec / TDD 尚未決定時可使用 `Pending`。
+- TDD Trace 明確要求真實執行證據。
 
 ## [1.3.1] - 2026-08-23
-### Added
-- Compact Routing Trace for Standard, Complex, and High-Risk tasks.
-- One-line route trace for Simple tasks.
-- TDD Trace with actual RED / GREEN / REFACTOR / Full Suite evidence.
-- `docs/OBSERVABILITY.md` explaining route and validation visibility.
+### 新增
+- Standard、Complex、High-Risk 任務的 Compact Routing Trace。
+- Simple 任務的一行 Route Trace。
+- 包含真實 RED / GREEN / REFACTOR / Full Suite 證據的 TDD Trace。
+- 新增 `docs/OBSERVABILITY.md`。
 
-### Changed
-- Completion reports now include the selected route.
-- TDD may no longer be claimed without observable execution evidence.
-- Feature and Bug workflows now reference routing/TDD traces.
+### 變更
+- Completion Report 加入所選 Route。
+- 沒有可觀察的執行證據，不應宣稱完成 TDD。
+- Feature 與 Bug Workflow 加入 Routing / TDD Trace 規則。
 
 ## [1.3.0] - 2026-08-23
-### Added
-- Simple / Standard / Complex task routing.
-- Independent high-risk routing for security- and data-sensitive work.
-- Spec-driven development workflow with acceptance criteria and out-of-scope boundaries.
-- Optional TDD workflow using Red → Green → Refactor.
-- Explicit verification contract: Passed / Failed / Not run / Manual-Static check.
+### 新增
+- Simple / Standard / Complex Complexity Routing。
+- 獨立 High-Risk Routing。
+- Spec-Driven Development 與 Acceptance Criteria / Out-of-Scope 邊界。
+- Optional TDD：Red → Green → Refactor。
+- Verification Contract：Passed / Failed / Not run / Manual-Static check。
 
-### Changed
-- Feature workflow now adapts to task complexity and risk.
-- Bug workflow emphasizes reproduction, root cause, regression testing, and minimal fixes.
-- `AGENTS.md` now acts as a lightweight adaptive router rather than forcing one workflow depth.
-- Workflow guidance now uses progressive disclosure: load only the files relevant to the task.
-
-## [1.2.0] - 2026-08-22
-### Changed
-- Renamed the hidden workflow directory to `codex-system/` to avoid hidden-folder upload and visibility issues.
-- Updated routing paths, installation docs, and demo structure.
-- Installation is now `AGENTS.md` + `codex-system/`.
+### 變更
+- Feature Workflow 會依 Complexity 與 Risk 調整深度。
+- Bug Workflow 強調 Reproduction、Root Cause、Regression Test 與 Minimal Fix。
+- `AGENTS.md` 改為 Adaptive Router，而不是所有任務強制同一深度。
+- 採 Progressive Disclosure，只載入當前任務需要的 Workflow / Guidance。
 
 ## [1.2.0] - 2026-08-22
-### Changed
-- Introduced the install-once structure.
-- Users install only `AGENTS.md` and `codex-system/` into the repository root.
-- Added workflow routing in `AGENTS.md`.
-- Workflows, prompts, docs, and templates live under `codex-system/`.
-- Manual prompt copy-pasting is no longer the default usage model.
+- 改用 `codex-system/` 目錄，避免 Hidden Folder 的上傳與可見性問題。
+- 安裝方式統一為 Repository Root 下的 `AGENTS.md` + `codex-system/`。
+- 導入 Install-Once 架構與 AGENTS.md Workflow Routing。
+- 不再以手動複製 Prompt 作為預設使用方式。
 
 ## [1.0.0] - 2026-08-22
-- Initial release.
+- 初始版本。
