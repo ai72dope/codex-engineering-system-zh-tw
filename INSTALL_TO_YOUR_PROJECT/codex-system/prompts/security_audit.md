@@ -14,3 +14,10 @@ Consider:
 - Error information leakage
 
 For each meaningful finding state location, trigger condition, impact, evidence, and remediation. Mark issues that cannot be confirmed statically as requiring environment/manual verification. Do not present this as formal security certification.
+
+
+## Security model integrity
+
+Do not treat a missing security model as permission to invent one. Before implementing authentication/authorization changes, identify repository evidence for actor identity, authentication context, roles/permissions/ownership, protected operation, and denial behavior.
+
+If those foundations are missing or ambiguous, the safe outcome is a blocker/clarification message, not a newly invented `acting_user_id`, role scheme, or authentication flow.

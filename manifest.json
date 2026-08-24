@@ -1,8 +1,8 @@
 {
   "product": "Codex Engineering System",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "language": "en",
-  "edition": "ZH-TW",
+  "edition": "Full English",
   "install_items": [
     "AGENTS.md",
     "codex-system/"
@@ -28,6 +28,5 @@
     "trace-before-already-fixed-response",
     "pending-spec-tdd-state",
     "strict-tdd-evidence"
-  ],
-  "localization": "Traditional Chinese user documentation; validated runtime instructions preserved in English"
+  ]
 }

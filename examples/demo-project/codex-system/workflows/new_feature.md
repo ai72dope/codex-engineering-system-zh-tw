@@ -10,11 +10,15 @@ Classify complexity and risk using `routing/complexity.md` and `routing/risk.md`
 - High-risk feature: increase review and validation depth.
 
 ## Phase 1 — Understand
-Read relevant code, tests, `AGENTS.md`, dependencies, and existing patterns. Identify affected behavior and important unknowns.
+Read relevant code, tests, `AGENTS.md`, dependencies, and existing patterns. Identify affected behavior and important unknowns. Separate ordinary implementation details from consequential product/security decisions.
+
+Before implementation, stop for clarification if the feature would require inventing material business rules, authorization semantics, destructive-operation policy, or public-contract behavior that is not established by repository evidence or the user.
 
 ## Phase 2 — Define
 For Standard work, state the intended behavior and key edge cases in the plan.
 For Complex/ambiguous work, create a proportional spec with acceptance criteria and out-of-scope boundaries.
+
+Do not fill open product questions with plausible defaults. Loyalty tiers, discount rates, eligibility, stacking, permission models, actor identity, and destructive-operation semantics are requirements, not implementation details.
 
 ## Phase 3 — Plan
 Create the minimum implementation plan: files/components to change, API/data impact, compatibility concerns, risks, and validation strategy.

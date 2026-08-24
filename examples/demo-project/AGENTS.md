@@ -1,6 +1,6 @@
 # Codex Engineering System — Project Instructions
 
-This repository uses Codex Engineering System v1.3.2.
+This repository uses Codex Engineering System v1.3.3.
 
 ## Core engineering rules
 - Understand relevant code, dependencies, tests, and data flow before non-trivial changes.
@@ -8,6 +8,8 @@ This repository uses Codex Engineering System v1.3.2.
 - Preserve public APIs, data formats, business rules, and unrelated behavior unless change is explicitly required.
 - Never substitute requested implementation with placeholders such as `TODO`, `pass`, or `... existing code ...`.
 - State assumptions, missing context, and uncertainty instead of inventing repository facts.
+- Never invent consequential product or business rules just to make an ambiguous feature implementable. Examples include tiers, percentages, eligibility rules, stacking order, retention periods, permission semantics, or destructive-operation policy.
+- Never invent a security or authorization model that is not established by repository evidence or explicit user requirements. Do not create new actor identity parameters, roles, permission semantics, authentication flows, or deletion authority merely to satisfy a high-risk request.
 - Follow existing repository naming, formatting, linting, testing, and architectural conventions.
 - Never expose or log passwords, tokens, API keys, private keys, or other secrets.
 - Never claim a test, lint, type-check, build, security check, or runtime verification passed unless it actually ran successfully.
@@ -41,6 +43,28 @@ Load only when the task qualifies:
 - Refactoring analysis → `codex-system/prompts/refactoring.md`
 - Structured task specification → `codex-system/prompts/docstring_templates.md`
 - Quick everyday tasks → `codex-system/prompts/codex_task_library.md`
+
+## Decision boundaries
+
+Before implementation, distinguish **implementation choices** from **product/security decisions**.
+
+You may choose ordinary implementation details when they preserve confirmed behavior and repository conventions. You must stop and ask when the missing decision materially changes user-visible behavior, financial behavior, authorization, destructive effects, or public contracts.
+
+### Business-rule boundary
+If a request requires unknown business policy, do not choose a plausible default. Ask for the missing rule first.
+
+Examples that require confirmation when unspecified:
+- loyalty tiers, thresholds, percentages, eligibility, expiration, and stacking;
+- pricing, billing, refund, tax, or discount policy;
+- retention, deletion, archival, or retry policy;
+- externally visible status transitions or workflow rules.
+
+### Security-architecture boundary
+For authentication, authorization, user deletion, role checks, or other security-boundary changes, inspect the repository for the existing security model before designing anything.
+
+If required primitives are missing or ambiguous — for example actor identity, authentication context, role/permission representation, deletion API, ownership rules, or denial semantics — do not invent them. Emit the Route first, then explain the missing context and ask for the intended contract.
+
+A request such as `Only admins can delete users` does **not** authorize inventing `acting_user_id`, an `admin` role model, or a new authentication scheme unless those concepts already exist in the repository or the user explicitly specifies them.
 
 ## Mandatory routing trace
 

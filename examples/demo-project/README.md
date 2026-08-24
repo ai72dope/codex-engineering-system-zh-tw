@@ -1,21 +1,21 @@
-# Demo Project — v1.3.2
+# Demo Project — v1.3.2.2
 
-這個小型專案用來示範 Codex Engineering System 的安裝方式與 Adaptive Routing 行為。
+This small project demonstrates how Codex Engineering System is installed.
 
-Repository 內包含：
-
+The repository contains:
 - `AGENTS.md`
 - `codex-system/`
-- 範例 Source Code 與 Tests
+- sample source and tests
 
-你可以嘗試不同深度的需求：
+Try requests of different depth:
+- Simple: `Rename a local variable for clarity without changing behavior.`
+- Bug: `Find and fix the order total bug and add a regression test.`
+- Complex feature: `Add discount rules with explicit acceptance criteria and tests.`
 
-- Simple：`Rename a local variable for clarity without changing behavior.`
-- Bug：`Find and fix the order total bug and add a regression test.`
-- Complex Feature：`Add discount rules with explicit acceptance criteria and tests.`
+The purpose is to observe adaptive routing: trivial work stays lightweight, while ambiguous or risky work receives deeper specification and verification.
 
-觀察重點是：小任務保持輕量；模糊、複雜或高風險工作則增加 Specification、Testing 與 Verification 深度。
+Use Test 7 to verify that the final response contains a real `TDD Trace` rather than only saying "using TDD".
 
-若要測 TDD，請確認最後回覆包含真實 `TDD Trace`，而不只是說「using TDD」。
 
-若要測 Routing Visibility，每個 Case 請使用乾淨的 Demo 副本，避免前一題修改造成 Test Environment Contamination。
+For routing visibility tests, use a fresh copy of this demo for every test case.
+The Route block should appear before clarification or blocker messages.

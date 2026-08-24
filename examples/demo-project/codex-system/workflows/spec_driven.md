@@ -27,7 +27,16 @@ Identify meaningful boundaries, failures, permissions, empty states, retries, co
 Explicitly state nearby work that is not part of this change.
 
 ## 7. Open questions
-If an unresolved question materially changes product behavior, ask before implementing. Do not invent the answer.
+If an unresolved question materially changes product behavior, security behavior, destructive effects, financial behavior, or a public contract, ask before implementing. Do not invent the answer.
+
+Treat the following as consequential open questions unless repository evidence already answers them:
+- loyalty tiers, rates, eligibility, expiration, or stacking;
+- pricing, billing, tax, refund, or discount rules;
+- role/permission semantics, acting-user identity, ownership, or authentication context;
+- deletion, retention, archival, retry, or recovery policy;
+- externally visible API/status behavior.
+
+A plausible default is still an invented requirement.
 
 ## 8. Handoff
 Use the accepted spec as the source for planning, tests, implementation, and final verification.
